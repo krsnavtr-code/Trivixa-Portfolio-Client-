@@ -6,9 +6,11 @@ import {
   useTheme,
 } from "@mui/material";
 import { GitHub, LinkedIn, Twitter, Email } from "@mui/icons-material";
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
   const theme = useTheme();
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -54,7 +56,7 @@ const Footer = () => {
           }}
         >
           <Typography variant="body2" color="text.secondary">
-            © {currentYear} Trivixa. All rights reserved.
+            {t('footer.copyright', { year: currentYear })}
           </Typography>
 
           <Box sx={{ display: "flex", gap: 1 }}>
@@ -80,9 +82,9 @@ const Footer = () => {
             ))}
           </Box>
 
-          {/* <Typography variant="body2" color="text.secondary">
-            Built with React & Material-UI
-          </Typography> */}
+          <Typography variant="body2" color="text.secondary">
+            {t('footer.built_with')}
+          </Typography>
         </Box>
       </Container>
     </Box>

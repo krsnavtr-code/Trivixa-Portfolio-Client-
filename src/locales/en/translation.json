@@ -14,5 +14,9 @@
     "en": "English",
     "hi": "हिंदी",
     "ta": "தமிழ்"
+  },
+  "footer": {
+    "copyright": "© {{year}} Trivixa. All rights reserved.",
+    "built_with": "Built with React & Material-UI"
   }
 }
