@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  /* Main Colors */
+  --logo-bg: #0B2545;
+  --logo-text: #FFFFFF;
+
+  /* Base colors */
+  --primary: #4F46E5;    /* Indigo-600 */
+  --primary-light: #6366F1; /* Indigo-500 */
+  --primary-dark: #4338CA;  /* Indigo-700 */
+  --secondary: #10B981;   /* Emerald-500 */
+  --accent: #F59E0B;     /* Amber-500 */
+  
+  /* Neutral colors */
+  --text-primary: #1F2937;  /* Gray-800 */
+  --text-secondary: #4B5563; /* Gray-600 */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F9FAFB;  /* Gray-50 */
+  --border: #E5E7EB;       /* Gray-200 */
+}
+
+/* Dark theme overrides */
+.dark {
+  --text-primary: #F9FAFB;  /* Gray-50 */
+  --text-secondary: #D1D5DB; /* Gray-300 */
+  --bg-primary: #111827;    /* Gray-900 */
+  --bg-secondary: #1F2937;  /* Gray-800 */
+  --border: #374151;        /* Gray-700 */
+}
+
+/* Base styles */
+:root {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Apply theme variables */
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+/* Logo styling */
+.logo-container {
+  background-color: var(--logo-bg);
+  border-radius: 0.3rem;
+  padding: 0.1rem;
+}
+.logo {
+  font-weight: 600;
+  letter-spacing: 2px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: var(--logo-text);
+  display: inline-block;
+}
