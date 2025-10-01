@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { ThemeProvider as MuiThemeProvider, useMediaQuery, CssBaseline } from '@mui/material';
-import { getTheme } from '../theme';
+import { ThemeProvider as MuiThemeProvider, useMediaQuery, CssBaseline, createTheme } from '@mui/material';
+import { lightTheme, darkTheme } from '../theme';
 
 const ThemeContext = createContext({
   mode: 'light',
@@ -39,7 +39,23 @@ export const CustomThemeProvider = ({ children }) => {
     [mode]
   );
 
-  const theme = useMemo(() => getTheme(mode), [mode]);
+  const theme = useMemo(() => {
+    const baseTheme = mode === 'dark' ? darkTheme : lightTheme;
+    return createTheme({
+      ...baseTheme,
+      components: {
+        ...baseTheme.components,
+        MuiButton: {
+          styleOverrides: {
+            root: {
+              textTransform: 'none',
+              borderRadius: 8,
+            },
+          },
+        },
+      },
+    });
+  }, [mode]);
 
   return (
     <ThemeContext.Provider value={colorMode}>

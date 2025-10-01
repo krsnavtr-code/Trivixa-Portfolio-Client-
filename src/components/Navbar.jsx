@@ -35,7 +35,6 @@ const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const { mode, toggleColorMode } = useThemeContext();
   const { t, i18n } = useTranslation();
-  const theme = useMuiTheme();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -71,32 +70,20 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ width: 250 }}>
-      <List>
-        {navLinks.map((item) => (
-          <ListItem key={item.name} disablePadding>
-            <ListItemButton onClick={() => scrollToSection(item.href)}>
-              <ListItemText primary={item.name} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
   return (
     <>
-      <Slide appear={false} direction="down" in={!scrolled}>
+      <Slide appear={false} direction="down" in={true}>
         <AppBar
           position="fixed"
           elevation={scrolled ? 4 : 0}
           sx={{
-            height: 55, // Reduced from default 64px
+            height: 55,
             justifyContent: "center",
             backdropFilter: "blur(8px)",
             backgroundColor: scrolled ? "background.paper" : "transparent",
             transition: "all 0.3s ease",
+            background: "var(--logo-bg)",
+            color: "var(--logo-text)",
           }}
         >
           <Toolbar
@@ -131,24 +118,34 @@ const Navbar = () => {
             >
               {navLinks.map((item) => (
                 <Box
-                  key={item.id}
                   component="button"
-                  onClick={() => scrollToSection(item.href)}
                   sx={{
+                    position: "relative",
                     background: "none",
                     border: "none",
-                    color: "text.primary",
                     cursor: "pointer",
                     fontSize: "0.9rem",
                     fontWeight: 500,
                     px: 1.5,
                     py: 0.4,
                     mx: 0.5,
-                    borderRadius: 1,
-                    transition: "all 0.2s ease",
-                    "&:hover": {
-                      backgroundColor: "primary.logo",
-                      color: "white",
+                    transition: "color 0.3s ease",
+                    "&::after": {
+                      content: '""',
+                      position: "absolute",
+                      left: "10%",
+                      right: "10%",
+                      bottom: 0,
+                      height: "3px",
+                      borderRadius: "50%",
+                      backgroundColor: "primary.main",
+                      transform: "scaleX(0)",
+                      transformOrigin: "right",
+                      transition: "transform 0.4s ease",
+                    },
+                    "&:hover::after": {
+                      transform: "scaleX(1)",
+                      transformOrigin: "left",
                     },
                   }}
                 >
@@ -163,7 +160,7 @@ const Navbar = () => {
                   size="small"
                   aria-label="change language"
                   sx={{
-                    color: "text.primary",
+                    color: "#FFFFFF",
                     "&:hover": {
                       backgroundColor: "action.hover",
                     },
@@ -193,30 +190,22 @@ const Navbar = () => {
                   </MenuItem>
                 </Menu>
               </Box>
-              <Box
-                component="button"
+              <IconButton
                 onClick={toggleColorMode}
+                aria-label={
+                  mode === "dark"
+                    ? "Switch to light mode"
+                    : "Switch to dark mode"
+                }
                 sx={{
-                  background: "none",
-                  border: "none",
-                  color: "text.primary",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: 36,
-                  height: 36,
-                  borderRadius: "50%",
                   ml: 1,
-                  transition: "all 0.2s ease",
                   "&:hover": {
-                    color: "primary.main",
-                    backgroundColor: "action.hover",
+                    color: "#FFFFFF",
                   },
                 }}
               >
                 {mode === "dark" ? "🌞" : "🌙"}
-              </Box>
+              </IconButton>
             </Box>
 
             <IconButton

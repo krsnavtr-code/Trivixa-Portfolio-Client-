@@ -15,8 +15,8 @@ export const lightTheme = createTheme({
       paper: '#f9fafb',
     },
     text: {
-      primary: 'black', // gray-900
-      secondary: 'black', // gray-600
+      primary: '#000000', // black
+      secondary: '#4B5563', // gray-600
     },
   },
   typography: {
@@ -51,8 +51,8 @@ export const darkTheme = createTheme({
       paper: '#1f2937',
     },
     text: {
-      primary: 'white', // gray-50
-      secondary: 'white', // gray-400
+      primary: '#FFFFFF', // white
+      secondary: '#E5E7EB', // gray-200
     },
   },
   typography: {
@@ -72,4 +72,4 @@ export const darkTheme = createTheme({
   },
 });
 
-export const getTheme = (mode) => (mode === 'dark' ? darkTheme : lightTheme);
+// Theme objects are exported directly for use in ThemeProvider

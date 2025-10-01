@@ -18,5 +18,43 @@
   "footer": {
     "copyright": "© {{year}} Trivixa. All rights reserved.",
     "built_with": "Built with React & Material-UI"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Have a project in mind or want to collaborate? Send me a message!",
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "success": "Thank you for your message! I'll get back to you soon.",
+      "error": "There was an error sending your message. Please try again later."
+    }
+  },
+  "skills": {
+    "title": "My Skills & Expertise",
+    "subtitle": "A comprehensive overview of my technical and professional skills",
+    "frontend": "Frontend Development",
+    "backend": "Backend Development",
+    "tools": "Tools & Technologies",
+    "soft": "Soft Skills",
+    "communication": "Communication",
+    "teamwork": "Teamwork",
+    "problemSolving": "Problem Solving",
+    "timeManagement": "Time Management",
+    "adaptability": "Adaptability",
+    "leadership": "Leadership",
+    "creativity": "Creativity",
+    "criticalThinking": "Critical Thinking",
+    "additional": "Additional Skills & Interests"
+  },
+  "banner": {
+    "greeting": "Hi, I'm",
+    "name": "Krishna Avtar",
+    "title": "Full Stack Web Developer 🚀 | MERN | UI/UX Enthusiast",
+    "description": "I build modern, responsive, and scalable web applications that help businesses grow and ideas come to life. With expertise in MERN stack, I love crafting clean UI and seamless user experiences.",
+    "viewWork": "🚀 View My Work",
+    "contactMe": "📩 Contact Me",
+    "downloadResume": "📄 Download Resume"
   }
 }

@@ -9,6 +9,7 @@ const Layout = ({ children }) => {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
+        marginTop: '55px',
       }}
     >
       <Navbar />
