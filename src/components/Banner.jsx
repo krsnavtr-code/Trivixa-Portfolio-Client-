@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Container, Typography, Stack } from "@mui/material";
+import { Box, Container, Typography, Stack } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { Link as RouterLink } from "react-router-dom";
+import AnimatedBorderButton from "./AnimatedBorderButton";
+
 
 const Banner = () => {
   const { t } = useTranslation();
@@ -14,36 +15,39 @@ const Banner = () => {
 
   const fadeInUp = {
     opacity: mounted ? 1 : 0,
-    transform: mounted ? 'translateY(0)' : 'translateY(40px)',
-    transition: 'opacity 0.8s ease, transform 0.8s ease',
+    transform: mounted ? "translateY(0)" : "translateY(40px)",
+    transition: "opacity 0.8s ease, transform 0.8s ease",
   };
 
   const fadeInUpDelayed = {
     opacity: mounted ? 1 : 0,
-    transform: mounted ? 'translateY(0)' : 'translateY(40px)',
-    transition: 'opacity 1s ease 0.2s, transform 1s ease 0.2s',
+    transform: mounted ? "translateY(0)" : "translateY(40px)",
+    transition: "opacity 1s ease 0.2s, transform 1s ease 0.2s",
   };
 
   const fadeInUpMoreDelayed = {
     opacity: mounted ? 1 : 0,
-    transform: mounted ? 'translateY(0)' : 'translateY(40px)',
-    transition: 'opacity 1.2s ease 0.4s, transform 1.2s ease 0.4s',
+    transform: mounted ? "translateY(0)" : "translateY(40px)",
+    transition: "opacity 1.2s ease 0.4s, transform 1.2s ease 0.4s",
   };
 
   return (
     <Box
-      sx={{
+      sx={(theme) => ({
         minHeight: "60vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        bgcolor: "background.default",
-        background: "linear-gradient(135deg, #0f172a, #1e293b)",
-        color: "primary.contrastText",
+        background:
+          theme.palette.mode === "dark"
+            ? "linear-gradient(135deg, #0f172a, #1e293b)"
+            : "linear-gradient(135deg, #f8fafc, #e2e8f0)",
+        color: "text.primary",
         py: 10,
         px: 2,
-      }}
+        transition: "background 0.3s ease",
+      })}
     >
       <Container maxWidth="md">
         {/* Name / Role */}
@@ -53,12 +57,25 @@ const Banner = () => {
             component="h1"
             gutterBottom
             sx={{
-              fontWeight: 700,
+              fontWeight: 500,
               letterSpacing: "-0.5px",
               color: "primary.main",
             }}
           >
-            {t('banner.greeting', "Hi, I'm")} <span style={{ color: "#fff" }}>{t('banner.name', 'Krishna Avtar')}</span>
+            {t("banner.greeting", "Hi, I'm")}{" "}
+            <Box
+              component="span"
+              sx={{
+                color: "primary.main",
+                fontWeight: 700,
+                textShadow: (theme) =>
+                  theme.palette.mode === "dark"
+                    ? "0 0 10px rgba(59, 130, 246, 0.5)"
+                    : "none",
+              }}
+            >
+              {t("banner.name", "Krishna Avtar")}
+            </Box>
           </Typography>
         </Box>
 
@@ -68,17 +85,34 @@ const Banner = () => {
             variant="h5"
             component="h2"
             gutterBottom
-            sx={{ fontWeight: 400, color: "grey.300" }}
+            sx={{
+              fontWeight: 500,
+              color: "text.secondary",
+              mb: 3,
+            }}
           >
-            {t('banner.title', 'Full Stack Web Developer 🚀 | MERN | UI/UX Enthusiast')}
+            {t(
+              "banner.title",
+              "Full Stack Web Developer 🚀 | MERN | UI/UX Enthusiast"
+            )}
           </Typography>
           <Typography
             variant="body1"
-            sx={{ maxWidth: "600px", mx: "auto", mt: 2, color: "grey.400" }}
+            sx={{
+              maxWidth: "600px",
+              mx: "auto",
+              mt: 2,
+              color: "text.secondary",
+              fontSize: "1.1rem",
+              lineHeight: 1.7,
+            }}
           >
-            {t('banner.description', `I build modern, responsive, and scalable web applications that help
+            {t(
+              "banner.description",
+              `I build modern, responsive, and scalable web applications that help
             businesses grow and ideas come to life. With expertise in MERN
-            stack, I love crafting clean UI and seamless user experiences.`)}
+            stack, I love crafting clean UI and seamless user experiences.`
+            )}
           </Typography>
         </Box>
 
@@ -90,48 +124,16 @@ const Banner = () => {
             justifyContent="center"
             sx={{ mt: 5 }}
           >
-            <Button
-              component={RouterLink}
-              to="/projects"
-              variant="contained"
-              color="primary"
-              size="large"
-            >
+            <AnimatedBorderButton to="/projects">
               {t("banner.viewWork", "🚀 View My Work")}
-            </Button>
-            <Button
-              component={RouterLink}
-              to="/contact"
-              variant="outlined"
-              color="inherit"
-              size="large"
-              sx={{
-                borderColor: "primary.contrastText",
-                color: "primary.contrastText",
-                '&:hover': {
-                  borderColor: 'primary.light',
-                  color: 'primary.light',
-                },
-              }}
-            >
+            </AnimatedBorderButton>
+
+            <AnimatedBorderButton to="/contact">
               {t("banner.contactMe", "📩 Contact Me")}
-            </Button>
-            <Button
-              component="a"
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="text"
-              color="secondary"
-              size="large"
-              sx={{
-                '&:hover': {
-                  color: 'secondary.light',
-                },
-              }}
-            >
+            </AnimatedBorderButton>
+            <AnimatedBorderButton to="/resume.pdf">
               {t("banner.downloadResume", "📄 Download Resume")}
-            </Button>
+            </AnimatedBorderButton>
           </Stack>
         </Box>
       </Container>
