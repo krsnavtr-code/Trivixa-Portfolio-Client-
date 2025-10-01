@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "home": {
+    "welcome": "Welcome to My Portfolio",
+    "subtitle": "I'm a Full Stack Developer"
+  },
+  "language": {
+    "en": "English",
+    "hi": "हिंदी",
+    "ta": "தமிழ்"
+  }
+}

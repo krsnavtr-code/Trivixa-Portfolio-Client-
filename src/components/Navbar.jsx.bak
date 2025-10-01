@@ -9,17 +9,19 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  useScrollTrigger,
   Slide,
   useTheme as useMuiTheme,
   Menu,
   MenuItem,
   Typography,
+  Button,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/MenuOutlined";
 import CloseIcon from "@mui/icons-material/Close";
-import LanguageIcon from "@mui/icons-material/Language";
+import LanguageIcon from '@mui/icons-material/Language';
 import { useThemeContext } from "./ThemeProvider";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 const navLinks = [
   { id: "home", href: "#home" },
@@ -75,9 +77,9 @@ const Navbar = () => {
     <Box onClick={handleDrawerToggle} sx={{ width: 250 }}>
       <List>
         {navLinks.map((item) => (
-          <ListItem key={item.name} disablePadding>
+          <ListItem key={item.id} disablePadding>
             <ListItemButton onClick={() => scrollToSection(item.href)}>
-              <ListItemText primary={item.name} />
+              <ListItemText primary={t(`navbar.${item.id}`)} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -155,7 +157,7 @@ const Navbar = () => {
                   {t(`navbar.${item.id}`)}
                 </Box>
               ))}
-
+              
               {/* Language Selector */}
               <Box sx={{ ml: 1 }}>
                 <IconButton
@@ -163,9 +165,9 @@ const Navbar = () => {
                   size="small"
                   aria-label="change language"
                   sx={{
-                    color: "text.primary",
-                    "&:hover": {
-                      backgroundColor: "action.hover",
+                    color: 'text.primary',
+                    '&:hover': {
+                      backgroundColor: 'action.hover',
                     },
                   }}
                 >
@@ -176,19 +178,19 @@ const Navbar = () => {
                   open={Boolean(anchorEl)}
                   onClose={handleLanguageMenuClose}
                 >
-                  <MenuItem onClick={() => changeLanguage("en")}>
+                  <MenuItem onClick={() => changeLanguage('en')}>
                     <Typography variant="body2">
-                      {t("language.en")} {i18n.language === "en" && "✓"}
+                      {t('language.en')} {i18n.language === 'en' && '✓'}
                     </Typography>
                   </MenuItem>
-                  <MenuItem onClick={() => changeLanguage("hi")}>
+                  <MenuItem onClick={() => changeLanguage('hi')}>
                     <Typography variant="body2">
-                      {t("language.hi")} {i18n.language === "hi" && "✓"}
+                      {t('language.hi')} {i18n.language === 'hi' && '✓'}
                     </Typography>
                   </MenuItem>
-                  <MenuItem onClick={() => changeLanguage("ta")}>
+                  <MenuItem onClick={() => changeLanguage('ta')}>
                     <Typography variant="body2">
-                      {t("language.ta")} {i18n.language === "ta" && "✓"}
+                      {t('language.ta')} {i18n.language === 'ta' && '✓'}
                     </Typography>
                   </MenuItem>
                 </Menu>
@@ -258,34 +260,20 @@ const Navbar = () => {
               </ListItem>
             ))}
             <ListItem disablePadding>
-              <ListItemButton onClick={() => changeLanguage("en")}>
-                <ListItemText
-                  primary={t("language.en")}
-                  secondary={i18n.language === "en" ? "✓" : ""}
-                />
+              <ListItemButton onClick={() => changeLanguage('en')}>
+                <ListItemText primary={t('language.en')} secondary={i18n.language === 'en' ? '✓' : ''} />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton onClick={() => changeLanguage("hi")}>
-                <ListItemText
-                  primary={t("language.hi")}
-                  secondary={i18n.language === "hi" ? "✓" : ""}
-                />
+              <ListItemButton onClick={() => changeLanguage('hi')}>
+                <ListItemText primary={t('language.hi')} secondary={i18n.language === 'hi' ? '✓' : ''} />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton onClick={() => changeLanguage("ta")}>
-                <ListItemText
-                  primary={t("language.ta")}
-                  secondary={i18n.language === "ta" ? "✓" : ""}
-                />
+              <ListItemButton onClick={() => changeLanguage('ta')}>
+                <ListItemText primary={t('language.ta')} secondary={i18n.language === 'ta' ? '✓' : ''} />
               </ListItemButton>
             </ListItem>
           </List>
         </Drawer>
       </Box>
-    </>
-  );
-};
-
-export default Navbar;
