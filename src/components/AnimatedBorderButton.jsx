@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
-const AnimatedBorderButton = ({ to, children, ...props }) => {
+const AnimatedOmButton = ({ to, children, ...props }) => {
   return (
     <Button
       component={RouterLink}
@@ -11,67 +11,40 @@ const AnimatedBorderButton = ({ to, children, ...props }) => {
       sx={{
         position: "relative",
         overflow: "hidden",
-        color: "primary.light",
+        color: "primary.main",
         border: "none",
-        "&::before": {
-          content: '""',
+        backgroundColor: "secondary.main",
+        transition: "all 0.3s ease",
+        fontFamily: "'Noto Sans Devanagari', sans-serif",
+
+        "& .om-symbol": {
+          content: '"ॐ"',
           position: "absolute",
-          top: 0,
-          left: 0,
-          width: 0,
-          height: "2px",
-          backgroundColor: "primary.light",
-          transition: "all 0.3s ease",
+          top: "65%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          fontSize: "2rem",
+          color: "primary.main",
+          opacity: 0,
+          transition: "opacity 0.4s ease, transform 0.4s ease",
+          pointerEvents: "none",
+          userSelect: "none",
+          lineHeight: 2,
         },
-        "&::after": {
-          content: '""',
-          position: "absolute",
-          bottom: 0,
-          right: 0,
-          width: 0,
-          height: "2px",
-          backgroundColor: "primary.light",
-          transition: "all 0.3s ease",
-        },
-        "& span::before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          right: 0,
-          width: "2px",
-          height: 0,
-          backgroundColor: "primary.light",
-          transition: "all 0.3s ease",
-        },
-        "& span::after": {
-          content: '""',
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          width: "2px",
-          height: 0,
-          backgroundColor: "primary.light",
-          transition: "all 0.3s ease",
-        },
-        "&:hover::before": {
-          width: "100%",
-        },
-        "&:hover::after": {
-          width: "100%",
-        },
-        "&:hover span::before": {
-          height: "100%",
-        },
-        "&:hover span::after": {
-          height: "100%",
+
+        "&:hover .om-symbol": {
+          opacity: 0.5,
+          transform: "translate(-50%, -50%) scale(1.1)",
+          filter: "drop-shadow(0 0 6px rgba(255, 166, 0, 0.83))",
         },
         ...props.sx,
       }}
       {...props}
     >
       <span>{children}</span>
+      <span className="om-symbol">ॐ</span>
     </Button>
   );
 };
 
-export default AnimatedBorderButton;
+export default AnimatedOmButton;

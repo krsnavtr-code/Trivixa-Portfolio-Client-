@@ -38,10 +38,7 @@ const Footer = () => {
       sx={{
         py: 1,
         mt: "auto",
-        backgroundColor:
-          theme.palette.mode === "light"
-            ? "rgba(0, 0, 0, 0.02)"
-            : "rgba(255, 255, 255, 0.03)",
+        backgroundColor: "primary.main",
         borderTop: `1px solid ${theme.palette.divider}`,
       }}
     >
@@ -70,8 +67,8 @@ const Footer = () => {
                 sx={{
                   color: "text.secondary",
                   "&:hover": {
-                    backgroundColor: "primary.logo",
-                    color: "white",
+                    backgroundColor: "secondary.main",
+                    color: "primary.main",
                     transform: "translateY(-2px)",
                   },
                   transition: "all 0.2s ease",
